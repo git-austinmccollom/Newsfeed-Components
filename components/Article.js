@@ -138,6 +138,7 @@ function articleMaker(articleObj){
   firstP.textContent = articleObj.firstParagraph;
   secondP.textContent = articleObj.secondParagraph;
   thirdP.textContent = articleObj.thirdParagraph;
+  expandButton.textContent = '+';
 
   expandButton.addEventListener('click', event => {
     articleNode.classList.toggle('article-open');
@@ -148,11 +149,16 @@ function articleMaker(articleObj){
 const article1 = articleMaker(data[0]);
 console.log(article1);
 
-// const articleNodeArray = data.forEach(articleMaker());
-// console.log(articleNodeArray);
+const articleNodeArray = data.map( articleObj => {
+  return articleMaker(articleObj);
+});
+
 
 const articlesDiv = document.querySelector('.articles');
-articlesDiv.appendChild(article1);
+
+articleNodeArray.forEach(articleNode => {
+  articlesDiv.appendChild(articleNode);
+})
 
 /*
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
