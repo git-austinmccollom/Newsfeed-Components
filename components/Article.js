@@ -102,15 +102,73 @@ const data = [
 
     <span class="expandButton">+</span>
   </div>
+*/
 
+function articleMaker(articleObj){
+
+  //instatiate
+
+  const articleNode = document.createElement('div');
+  const titleNode = document.createElement('h2');
+  const dateNode = document.createElement('p');
+  const firstP = document.createElement('p');
+  const secondP = document.createElement('p');
+  const thirdP = document.createElement('p');
+  const expandButton = document.createElement('span')
+
+  //append and organize
+
+  articleNode.appendChild(titleNode);
+  articleNode.appendChild(dateNode);
+  articleNode.appendChild(firstP);
+  articleNode.appendChild(secondP);
+  articleNode.appendChild(thirdP);
+  articleNode.appendChild(expandButton);
+
+  //style
+
+  articleNode.classList.add('article');
+  dateNode.classList.add('date');
+  expandButton.classList.add('expandButton');
+
+  //dynamically insert content
+
+  titleNode.textContent = articleObj.title
+  dateNode.textContent = articleObj.date
+  firstP.textContent = articleObj.firstParagraph;
+  secondP.textContent = articleObj.secondParagraph;
+  thirdP.textContent = articleObj.thirdParagraph;
+
+  expandButton.addEventListener('click', event => {
+    articleNode.classList.toggle('article-open');
+  })
+
+  return articleNode
+}
+const article1 = articleMaker(data[0]);
+console.log(article1);
+
+// const articleNodeArray = data.forEach(articleMaker());
+// console.log(articleNodeArray);
+
+const articlesDiv = document.querySelector('.articles');
+articlesDiv.appendChild(article1);
+
+/*
   Step 2: Still inside `articleMaker`, add an event listener to the span.expandButton.
   This listener should toggle the class 'article-open' on div.article.
+*/
 
+/*
   Step 3: Don't forget to return something from your function!
+*/
 
+/*
   Step 4: Outside your function now, loop over the data. At each iteration you'll use your component
   to create a div.article element and append it to the DOM inside div.articles (see index.html).
+*/
 
+/*
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
