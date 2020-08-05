@@ -116,6 +116,15 @@ function articleMaker(articleObj){
   const thirdP = document.createElement('p');
   const expandButton = document.createElement('span')
 
+  //dynamically insert content
+
+  titleNode.textContent = articleObj.title
+  dateNode.textContent = articleObj.date
+  firstP.textContent = articleObj.firstParagraph;
+  secondP.textContent = articleObj.secondParagraph;
+  thirdP.textContent = articleObj.thirdParagraph;
+  expandButton.textContent = '+';
+
   //append and organize
 
   articleNode.appendChild(titleNode);
@@ -130,15 +139,6 @@ function articleMaker(articleObj){
   articleNode.classList.add('article');
   dateNode.classList.add('date');
   expandButton.classList.add('expandButton');
-
-  //dynamically insert content
-
-  titleNode.textContent = articleObj.title
-  dateNode.textContent = articleObj.date
-  firstP.textContent = articleObj.firstParagraph;
-  secondP.textContent = articleObj.secondParagraph;
-  thirdP.textContent = articleObj.thirdParagraph;
-  expandButton.textContent = '+';
 
   expandButton.addEventListener('click', event => {
     articleNode.classList.toggle('article-open');
